@@ -1,9 +1,8 @@
 var georgetownMap = {
   init: function() {
-    var _this = this;
-
     // Set up the map.
     this.setupMap();
+    var _this = this;
 
     // Get the GeoJSON file.
     $.ajax({
@@ -17,7 +16,7 @@ var georgetownMap = {
         _this.displayBuildingInfo(dataObj);
 
         // Setup earch event.
-        _this.setupSearch(dataObj);
+        _this.setupSearch(dataObj, _this);
       }
     });
   },
@@ -62,7 +61,7 @@ var georgetownMap = {
    * Search 
    */
 
-  setupSearch: function(data) {
+  setupSearch: function(data, context) {
     $('#search').keyup(function() {
       var searchString = $(this).val().toLowerCase();
 
@@ -73,7 +72,7 @@ var georgetownMap = {
             icon: L.mapbox.marker.icon({
               'marker-color': '#fa0'
             })
-          }).addTo(this.map);
+          }).addTo(context.map);
 
           return;
         }
