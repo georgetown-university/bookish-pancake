@@ -11,8 +11,13 @@ var georgetownMap = {
 
       // If successful, do a bunch of stuff.
       success: function(data) {
-        var dataObj = $.parseJSON(data)
+        dataObj = $.parseJSON(data);
+
+        // Display building info on click.
         _this.displayBuildingInfo(dataObj);
+
+        // Setup earch event.
+        _this.setupSearch(dataObj);
       }
     });
   },
@@ -49,6 +54,24 @@ var georgetownMap = {
       }
       
       info.html(content);
+    });
+  },
+
+
+  /* ***
+   * Search 
+   */
+
+  setupSearch: function(data) {
+    $('#search').keyup(function() {
+      var searchString = $(this).val().toLowerCase();
+
+      $.each(data.features, function(i, obj) {
+        if (obj.properties.name && obj.properties.name.toLowerCase() == searchString) {
+          console.log(obj);
+          return;
+        }
+      });
     });
   }
 };
