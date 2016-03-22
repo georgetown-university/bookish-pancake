@@ -68,20 +68,13 @@ var georgetownMap = {
 
       $.each(data.features, function(i, obj) {
         if (obj.properties.name && obj.properties.name.toLowerCase() == searchString) {
-          var marker = L.mapbox.marker.icon({
-            'marker-color': '#fa0'
-          });
-          console.log('found');
 
-          /*
-          L.marker([37.9, -77], {
-              icon: L.mapbox.marker.icon({
-                  'marker-size': 'large',
-                  'marker-symbol': 'bus',
-                  'marker-color': '#fa0'
-              })
-          }).addTo(map);
-          */
+          L.marker([obj.geometry.coordinates[0], obj.geometry.coordinates[1]], {
+            icon: L.mapbox.marker.icon({
+              'marker-color': '#fa0'
+            })
+          }).addTo(this.map);
+
           return;
         }
       });
