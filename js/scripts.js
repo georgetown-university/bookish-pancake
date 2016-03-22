@@ -2,16 +2,25 @@ var georgetownMap = {
   init: function() {
     var _this = this;
 
+    // Set up the map.
     this.setupMap();
 
+    // Get the GeoJSON file.
     $.ajax({
       url: 'geojson/export.geojson',
+
+      // If successful, do a bunch of stuff.
       success: function(data) {
         var dataObj = $.parseJSON(data)
         _this.displayBuildingInfo(dataObj);
       }
     });
   },
+
+
+  /* ***
+   * Function to set up and display the Mapbox map.
+   */
 
   setupMap: function() {
     L.mapbox.accessToken = 'pk.eyJ1IjoiYWNwODgiLCJhIjoiY2ltMmd2ZzRpMDAwdDVsa3NnYzM3ajRhOSJ9.RPCYqcmXqi2GJR1LyRjXWQ';
@@ -20,6 +29,11 @@ var georgetownMap = {
     L.mapbox.styleLayer('mapbox://styles/acp88/cim2j5njp009t9jm08o7xzp9c').addTo(this.map);
   },
 
+
+  /* ***
+   * Function to display building information on click.
+   */
+
   displayBuildingInfo: function(data) {
     var layer = L.mapbox.featureLayer().addTo(this.map);
     var info = $('#info');
@@ -27,15 +41,14 @@ var georgetownMap = {
     layer.setGeoJSON(data);
 
     layer.on('click',function(e) {
-      //console.log('clicked');
-      // Force the popup closed.
-      //e.layer.closePopup();
-
       var feature = e.layer.feature;
-      var content = '<div><strong>' + feature.properties.title + '</strong>' +
-                    '<p>' + feature.properties.description + '</p></div>';
 
-      info.innerHTML = content;
+      var content = '';
+      if (feature.properties.name) {
+        var content = '<div><strong>' + feature.properties.name + '</strong>';
+      }
+      
+      info.html(content);
     });
   }
 };
