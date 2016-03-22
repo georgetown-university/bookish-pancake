@@ -30,7 +30,7 @@ var georgetownMap = {
     L.mapbox.accessToken = 'pk.eyJ1IjoiYWNwODgiLCJhIjoiY2ltMmd2ZzRpMDAwdDVsa3NnYzM3ajRhOSJ9.RPCYqcmXqi2GJR1LyRjXWQ';
 
     this.map = L.mapbox.map('map').setView([38.9089,-77.0741], 16);
-    L.mapbox.styleLayer('mapbox://styles/acp88/cim2j5njp009t9jm08o7xzp9c').addTo(this.map);
+    L.mapbox.styleLayer('mapbox://styles/acp88/cim41zb3600fl9jkpjno0y6as').addTo(this.map);
   },
 
 
@@ -51,14 +51,14 @@ var georgetownMap = {
       if (feature.properties.name) {
         var content = '<div><strong>' + feature.properties.name + '</strong>';
       }
-      
+
       info.html(content);
     });
   },
 
 
   /* ***
-   * Search 
+   * Search
    */
 
   setupSearch: function(data, context) {
