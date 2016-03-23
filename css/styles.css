@@ -1,21 +1,41 @@
-body { 
-  margin: 0; 
+body {
+  margin: 0;
   padding: 0;
 }
 
-#map { 
-  position: absolute; 
-  top: 0; 
-  bottom: 0; 
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100%;
 }
 
 #info {
   position: absolute;
-  top: 2rem;
-  right: 0;
-  background: #fff;
+  top: 3rem;
+  right: 10px;
+  background: rgba(255,255,255,0.85);
   padding: 1em;
+  width: 250px;
+  font-family: "proxima-nova";
+}
+
+#info h2 {
+  font-family: "adobe-caslon-pro";
+  margin: 0;
+  font-style: italic;
+  color: #867875;
+}
+
+#info p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+#info img {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .search-ui {
