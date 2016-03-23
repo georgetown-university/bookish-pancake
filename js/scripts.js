@@ -27,10 +27,11 @@ var georgetownMap = {
    */
 
   setupMap: function() {
-    L.mapbox.accessToken = 'pk.eyJ1IjoiYWNwODgiLCJhIjoiY2ltMmd2ZzRpMDAwdDVsa3NnYzM3ajRhOSJ9.RPCYqcmXqi2GJR1LyRjXWQ';
+    L.mapbox.accessToken = 'pk.eyJ1IjoicmFwNDIiLCJhIjoiY2lsOW01N2VvMGxxYnc3a3J2MHBvNGNoYyJ9.vFDYQ6CFBZkadxV4D6mhaQ';
 
     this.map = L.mapbox.map('map').setView([38.9089,-77.0741], 16);
-    L.mapbox.styleLayer('mapbox://styles/acp88/cim2j5njp009t9jm08o7xzp9c').addTo(this.map);
+    L.mapbox.styleLayer('mapbox://styles/rap42/cim4034a500fqa0m47wrv44z9').addTo(this.map);
+
   },
 
 
@@ -39,26 +40,64 @@ var georgetownMap = {
    */
 
   displayBuildingInfo: function(data) {
-    var layer = L.mapbox.featureLayer().addTo(this.map);
+    // var layer = L.mapbox.featureLayer().addTo(this.map);
+    var georgetownLayer = L.geoJson(data, {
+      style: L.mapbox.simplestyle.style,
+      onEachFeature: onEachFeature
+    }).addTo(this.map)
     var info = $('#info');
 
-    layer.setGeoJSON(data);
+    // layer.setGeoJSON(data);
 
-    layer.on('click',function(e) {
-      var feature = e.layer.feature;
+    function mousemove(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+        weight: 3,
+        color: '#867875',
+        fillColor: '#011e41',
+        fillOpacity: 0.9
+      });
+    }
+
+    function mouseout(e) {
+        georgetownLayer.resetStyle(e.target);
+    }
+
+    function showDetails(e) {
+      var layer = e.target;
 
       var content = '';
-      if (feature.properties.name) {
-        var content = '<div><strong>' + feature.properties.name + '</strong>';
+      if (layer.feature.properties.name) {
+        var content = '<div><strong>' + layer.feature.properties.name + '</strong><br />' + layer.feature.properties['addr:housenumber'] + ' ' + layer.feature.properties['addr:street'] + '</div>';
       }
-      
+
       info.html(content);
-    });
+    }
+
+    // layer.on('click',function(e) {
+    //   var feature = e.layer.feature;
+    //
+    //   var content = '';
+    //   if (feature.properties.name) {
+    //     var content = '<div><strong>' + feature.properties.name + '</strong>';
+    //   }
+    //
+    //   info.html(content);
+    // });
+
+    function onEachFeature(feature, layer) {
+      layer.on({
+          mousemove: mousemove,
+          mouseout: mouseout,
+          click: showDetails
+      });
+    }
   },
 
 
   /* ***
-   * Search 
+   * Search
    */
 
   setupSearch: function(data, context) {
