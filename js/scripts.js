@@ -31,7 +31,6 @@ var georgetownMap = {
 
     this.map = L.mapbox.map('map').setView([38.9089,-77.0741], 16);
     L.mapbox.styleLayer('mapbox://styles/rap42/cim4034a500fqa0m47wrv44z9').addTo(this.map);
-
   },
 
 
