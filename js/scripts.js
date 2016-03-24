@@ -47,7 +47,11 @@ var georgetownMap = {
       },
       'way/67521384': {
         'photo': 'http://farm2.static.flickr.com/1274/4680198840_1d601b5027.jpg',
-        'history': 'Healy Hall is on the National Register of Historic Places and is also a National Historic Landmark. It is named after Patrick F. Healy, S.J., Georgetown president from 1873 to 1882 and the first African-American to head a major, predominantly white university. Work began on the building in 1877 and much of the interior was completed by the 1881-1882 academic year. Gaston Hall was completed in 1901.'
+        'history': "The Thomas & Dorothy Leavey Center opened in 1988 at the start of the university's yearlong bicentennial celebration and was dedicated to Thomas (L'23) and Dorothy Leavey.  The Leavey Center was funded by a gift from the Thomas and Dorothy Leavey Foundation."
+      },
+      'way/67521495': {
+        'photo': 'http://farm5.static.flickr.com/4142/4774692677_2841ddf1ee_m.jpg',
+        'history': "The Edward B. Bunn, S.J. Intercultural Center was completed in 1982, and was named after Edward J. Bunn, S.J., who served as president of the university from 1952 to 1964."
       }
     };
     // var layer = L.mapbox.featureLayer().addTo(this.map);
