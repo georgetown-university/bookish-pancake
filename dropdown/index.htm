@@ -1,0 +1,238 @@
+<html>
+<title>Dropdown Accessibility Test</title>
+<style>
+  html {
+    font-size: 24px;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  nav {
+    position: relative;
+    padding: 0.5rem;
+    background: #63666a;
+  }
+  ul.navbar-nav {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.25rem;
+    background: #bbbcbc;
+    list-style: none;
+  }
+  ul.navbar-nav li {
+    border: 1px solid #d6d2c4;
+    background: #041e42;
+  }
+  ul.navbar-nav li:hover {
+    background: #003da5;
+  }
+  ul.navbar-nav li a {
+    display: block;
+    padding: 0.5rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  li.menu-item-has-children span {
+    display: inline-block;
+    width: 1rem;
+    color: white;
+    text-align: center;
+    vertical-align: text-bottom;
+  }
+  li.menu-item-has-children .open { display: inline-block; }
+  li.menu-item-has-children .close { display: none; }
+  li.menu-item-has-children:hover .close { display: inline-block; }
+  li.menu-item-has-children:hover .open { display: none; }
+
+
+
+  ul.sub-menu {
+    transition: 0s 0.5s;
+    visibility: hidden;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li.nav-item:hover ul.sub-menu {
+    transition-delay: 0.5s;
+    visibility: visible;
+  }
+
+  ul.sub-menu li.nav-item {
+    background: #1056b4;
+  }
+  ul.sub-menu li.nav-item:hover {
+    background: #00b5e2;
+  }
+
+
+
+  li.menu-item-has-children .open-submenu {
+    transition: 0s 0.5s;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    background: #63666a;
+  }
+  /* for mouse */ li.menu-item-has-children .open-submenu:focus,
+  /* for keyboard */ li.menu-item-has-children .submenu-open {
+    z-index: 9999;
+    visibility: visible;
+    clip: auto;
+    height: auto;
+    transition-delay: 0.5s;
+  }
+</style>
+
+<body>
+
+<nav aria-label="Main navigation">
+<ul id="menu-main-navigation-menu-1" class="nav navbar-nav">
+
+  <li class="menu-item-has-children nav-item">
+    <a href="https://live-guwordpress-college.pantheonsite.io/discover/">Discover
+      <span aria-hidden="true" class="open">+</span>
+      <span aria-hidden="true" class="close">-</span>
+    </a>
+    <a href="#" class="open-submenu" aria-haspop="true" aria-expanded="false" aria-label="open Discover submenu">open submenu</a>
+    <ul class="sub-menu" role="group" aria-hidden="true" aria-expanded="false">
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/discover/the-washington-dc-classroom/">The Washington, DC Classroom</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/discover/undergraduate-education-jesuit-tradition/">Undergraduate Education in the Jesuit Tradition</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="menu-item-has-children nav-item">
+    <a href="https://live-guwordpress-college.pantheonsite.io/academics/">Academics
+      <span aria-hidden="true" class="open">+</span>
+      <span aria-hidden="true" class="close">-</span>
+    </a>
+    <a href="#" class="open-submenu" aria-haspop="true" aria-expanded="false" aria-label="open Academics submenu">open submenu</a>
+    <ul class="sub-menu" role="group" aria-hidden="true" aria-expanded="false">
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/academics/core-requirements/">Core Requirements</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/academics/majors-minors-and-certificates/">Majors, Minors, and Certificates</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/academics/departments-and-programs/">Departments and Programs</a></li>
+      <li class="nav-item"><a href="http://fll.georgetown.edu">Faculty of Languages and Linguistics</a></li>
+      <li class="menu-item-has-children nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/academics/baker-scholars/">Baker Scholars Program</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="menu-item-has-children nav-item">
+    <a href="https://live-guwordpress-college.pantheonsite.io/research/">Research
+      <span aria-hidden="true" class="open">+</span>
+      <span aria-hidden="true" class="close">-</span>
+    </a>
+    <a href="#" class="open-submenu" aria-haspop="true" aria-expanded="false" aria-label="open Research submenu">open submenu</a>
+    <ul class="sub-menu" role="group" aria-hidden="true" aria-expanded="false">
+      <li class="menu-item-has-children nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/research/undergraduate-research/">Undergraduate Research</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/admissions/">Admissions</a>
+  </li>
+
+  <li class="menu-item-has-children nav-item">
+    <a href="https://live-guwordpress-college.pantheonsite.io/advising/">Advising
+      <span aria-hidden="true" class="open">+</span>
+      <span aria-hidden="true" class="close">-</span>
+    </a>
+    <a href="#" class="open-submenu" aria-haspop="true" aria-expanded="false" aria-label="open Advising submenu">open submenu</a>
+    <ul class="sub-menu" role="group" aria-hidden="true" aria-expanded="false">
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/find-your-dean/">Find Your Advisor</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/how-do-i/">Frequently Asked Questions</a></li>
+      <li class="menu-item-has-children nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/first-years-and-sophomores/">First-Years and Sophomores</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/juniors-and-seniors/">Juniors and Seniors</a></li>
+      <li class="menu-item-has-children nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/commencement/">Commencement</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/internships/">Internships</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/forms/">Forms</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/advising/medical-law-graduate-school/">Medical, Law, or Graduate School?</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="menu-item-has-children nav-item">
+    <a href="https://live-guwordpress-college.pantheonsite.io/about/">About
+      <span aria-hidden="true" class="open">+</span>
+      <span aria-hidden="true" class="close">-</span>
+    </a>
+    <a href="#" class="open-submenu" aria-haspop="true" aria-expanded="false" aria-label="open About submenu">open submenu</a>
+    <ul class="sub-menu" role="group" aria-hidden="true" aria-expanded="false">
+      <li class="menu-item-has-children nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/about/deans-message/">Dean's Message</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/about/mission-statement-and-history/">Mission Statement and History</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/about/college-board-of-advisors/">College Board of Advisors</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/about/deans-staff/">Dean's Staff</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/about/connect-with-us/">Connect With Us</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/about/gcfo/">College Finance Office</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="menu-item-has-children nav-item">
+    <a href="https://live-guwordpress-college.pantheonsite.io/newsarchive/">News
+      <span aria-hidden="true" class="open">+</span>
+      <span aria-hidden="true" class="close">-</span>
+    </a>
+    <a href="#" class="open-submenu" aria-haspop="true" aria-expanded="false" aria-label="open News submenu">open submenu</a>
+    <ul class="sub-menu" role="group" aria-hidden="true" aria-expanded="false">
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/newsarchive/alumni-profiles/">Alumni Profiles</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/newsarchive/faculty-profiles/">Faculty Profiles</a></li>
+      <li class="nav-item"><a href="https://live-guwordpress-college.pantheonsite.io/newsarchive/student-profiles/">Student Profiles</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+</nav>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+jQuery( document ).ready( function( $ ) {
+
+  $( '.open-submenu' ).click( function( e ) {
+      e.preventDefault();
+      $( this ).attr( 'aria-expanded', 'true' );
+      $( this ).next( '.sub-menu' )
+        .focus()
+        .addClass( 'submenu-open' )
+        .attr( {
+          'aria-hidden': 'false',
+          'aria-expanded': 'true'
+        } );
+  } );
+
+  $( document ).keyup( function( e ) {
+    if ( e.keyCode === 27 ) {
+      $( '.open-submenu' ).attr( 'aria-expanded', 'false' );
+      $( '.submenu-open' )
+        .attr( {
+          'aria-hidden': 'true',
+          'aria-expanded': 'false'
+        } )
+        .removeClass( 'submenu-open' );
+    }
+  });
+
+  $( '.sub-menu li:last-child a' ).focusout( function ( e ) {
+    $( '.open-submenu' ).attr( 'aria-expanded', 'false' );
+    $( '.submenu-open' )
+      .attr( {
+        'aria-hidden': 'true',
+        'aria-expanded': 'false'
+      } )
+      .removeClass( 'submenu-open' );
+  } );
+
+} );
+</script>
+
+</body>
+</html>
